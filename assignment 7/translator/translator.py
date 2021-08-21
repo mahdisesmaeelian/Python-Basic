@@ -1,14 +1,13 @@
 try:
     read_dict=open('words.txt', 'r')
     mywords = read_dict.read()
-    words=[]   
-    i=0
+    words=[]  
     wordslist=mywords.split('\n')
-    while i < len(wordslist):
-        words.append({'english': wordslist[i],'persian':wordslist[i+1]})
-        i+=2
-    read_dict.close()
-           
+
+    for i in range (0,len(wordslist),2):
+        words.append({"english":wordslist[i], "persian":wordslist[i+1]})   
+
+    read_dict.close()      
 except:
     print('File not found!')
 
