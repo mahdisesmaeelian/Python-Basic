@@ -11,27 +11,6 @@ try:
            
 except:
     print('File not found!')
-   
-def AddNewWord():
-    English=input("Enter an English word that you wanna add to doc: ")
-    Persian=input("Enter it's translation:")
-    words.append({'english': English,'persian': Persian})
-    print('\nThis word successfully added to doc \n')
-    open_dict = open('words.txt', 'a')
-    open_dict.write('\n'+English)
-    open_dict.write('\n'+Persian)
-    open_dict.close()
-
-def translatetopersian():
-    sentence =input("Enter your sentence : ")
-    enwords= sentence.split(' ')
-    for i in range(len(enwords)):
-        for j in range(len(words)):
-            if words[j]['english'] ==enwords[i]:
-                print(words[j]['persian'], end=' ')
-                break
-        else:
-            print(enwords[i], end=' ')           
 
 def translatetoenglish():
     sentence = input('Enter your sentence: ')
@@ -44,8 +23,29 @@ def translatetoenglish():
                 break
         else:
             print(persianword[i], end=' ')
-     
 
+def translatetopersian():
+    sentence =input("Enter your sentence : ")
+    enwords= sentence.split(' ')
+    for i in range(len(enwords)):
+        for j in range(len(words)):
+            if words[j]['english'] ==enwords[i]:
+                print(words[j]['persian'], end=' ')
+                break
+        else:
+            print(enwords[i], end=' ')           
+
+
+def AddNewWord():
+    English=input("Enter an English word that you wanna add to doc: ")
+    Persian=input("Enter it's translation:")
+    words.append({'english': English,'persian': Persian})
+    print('\nThis word successfully added to doc \n')
+    open_dict = open('words.txt', 'a')
+    open_dict.write('\n'+English)
+    open_dict.write('\n'+Persian)
+    open_dict.close()
+ 
 while True:
     print("\n 1-add new word\n 2-translation english to persian\n 3- translation persian to english\n 4- exit")
     choice =input("Choose one of the options above: ") 
@@ -61,4 +61,3 @@ while True:
 
     elif choice=='4':
         exit()
-
