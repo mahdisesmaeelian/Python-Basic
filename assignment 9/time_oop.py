@@ -44,19 +44,18 @@ class Time:
         self.result = ((self.hour*3600)+(self.minute*60)+self.second)
         print(self.result)
 
-    def sectotime(a):
-        result = a
+    def sectotime(self,a):
         while True:
-            if result >= 3600:
-                result -= 3600
-                result.hour = result.hour+1
-            elif result.minute >= 60:
-                result -= 60
-                result.minute = result.minute+1
+            if a >= 3600:
+                a -= 3600
+                self.hour = self.hour+1
+            elif a >= 60:
+                a -= 60
+                self.minute = self.minute+1
             else:
-                result.second = result
+                self.second = a
                 break
-        return result       
+        return a       
 
     def show(self):
         print(self.hour,":",self.minute,":",self.second)
@@ -64,7 +63,6 @@ class Time:
 
 time1 = Time(8, 35, 48)
 time2 = Time(1, 53, 16)
-seconds=Time(30948) 
 
 print("The sum of these two hours is: ")
 time1.sum(time2).show()
@@ -72,6 +70,7 @@ print("The minus of these two hours is: ")
 time1.minus(time2).show()
 print("The total seconds of time1 is: ")
 time1.timetosec()
-#print("The is full time is: ")
-seconds.sectotime().show()
+print("The is full time is: ")
+time=Time.sectotime(30948)
+time.show()
 
