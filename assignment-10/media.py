@@ -10,16 +10,15 @@ class Media:
         self.category =cat
         
     def showinfo(self):
-        for i in range(len(self.movielist)):
-            print(f'Movie {i} info is :', self.movielist[i])
-            print('--------------------------------') 
+        print(f'Movie name :', self.name)
+        print('--------------------------------') 
 
     def download(self):
         flag = 0
         answer = input('\ngive me the name of the movie you wanna download: ')
         for i in range(len(self.movielist)):
-            if answer == self.movielist[i][0]:
-                link = self.movielist[i][4]
+            if answer == self.url:
+                link = self.url
                 first_stream = pytube.YouTube(link).streams.first()
                 first_stream.download(output_path='./', filename='movie.mp4')
             else:
