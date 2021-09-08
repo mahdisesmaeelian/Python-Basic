@@ -1,5 +1,3 @@
 Coda,Sian Heder,8.1,https://www.youtube.com/watch?v=iszwuX1AK6A, 1:51,Emilia Jones,movie
 Friends,David Crane,9,https://www.youtube.com/watch?v=nnn02NDIEiE,0:22,Jennifer Aniston-zh-fh,series,21
 The social deilemma,Jeff Orlowski,7.6,https://www.youtube.com/watch?v=uaaC57tcci0,1:34,Tristan Harris,documentory
-dg,d,f,g,b,f,movie
-name1,dh,gcch,gdfh,h,sdh,series,12

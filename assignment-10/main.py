@@ -121,6 +121,23 @@ class Main:
 
         self.ShowMenu()
 
+    def Download(self):
+        flag = 0
+        answer = input('\ngive me the name of the movie you wanna download: ')
+        for media in self.movielist:
+            if answer == media.name:
+                media.download()
+            else:
+                flag += 1
+
+            if flag >= len(self.movielist):
+                print("\nThis movie doesn't exist in our list")    
+        self.ShowMenu()
+
+    def Searchbydu():
+        firstdu = input("Give me the first duration: ")
+        secdu = input("Give me the second duration: ")
+
     def Savetodatabase(self):
         myfile=open('database.txt', 'w')
         
@@ -138,7 +155,7 @@ class Main:
 
     def ShowMenu(self):
         
-        print('1-Add movie\n2-Edit movie\n3-Delete movie\n4-Search\n5-Show movielist\n6-Save and Exit ')
+        print('1-Add movie\n2-Edit movie\n3-Delete movie\n4-Search by duration\n5-Show movielist\n6-Download movie\n7-Save and Exit ')
     
         choice = input('Please choose a number : ')
                 
@@ -152,12 +169,15 @@ class Main:
             self.Deletemovie()
 
         elif choice == '4':
-            pass
+            self.Searchbydu()
 
         elif choice == '5':
-            self.ShowMovielist()    
+            self.ShowMovielist()
 
         elif choice == '6':
+            self.Download()
+
+        elif choice == '7':
             self.Savetodatabase()
 
         else:    
