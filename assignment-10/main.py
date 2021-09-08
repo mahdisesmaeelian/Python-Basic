@@ -134,9 +134,26 @@ class Main:
                 print("\nThis movie doesn't exist in our list")    
         self.ShowMenu()
 
-    def Searchbydu():
-        firstdu = input("Give me the first duration: ")
-        secdu = input("Give me the second duration: ")
+    def Searchbydu(self):
+        firstdu = input("Give me the first duration like this [00:00]: ")
+        secdu = input("Give me the second duration like this [00:00]: ")
+        firstdu = firstdu.split(':')
+        h1 = int(firstdu[0])
+        min1 = int(firstdu[1])
+        du1 = h1*3600 + min1*60
+        secdu = secdu.split(':')
+        h2 = int(secdu[0])
+        min2 = int(secdu[1])
+        du2 = h2*3600 + min2*60
+
+        for media in self.movielist:
+            moviedu = media.duration.split(':')
+            h3 = int(moviedu[0])
+            m3 = int(moviedu[1])
+            moviedu3 = h3*3600 + m3*60
+
+            if du1 <= moviedu3 <= du2:
+                print("This movie seems near to your input duration : ",media.name)
 
     def Savetodatabase(self):
         myfile=open('database.txt', 'w')
