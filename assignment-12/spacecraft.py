@@ -129,13 +129,6 @@ class Game(arcade.Window):
     def on_update(self, delta_time):
 
         self.end_time = time.time()    
-        self.timeforspeed = time.time()
-
-        if self.end_time - self.start_time > self.timeforspeed :
-            for en in self.enemy_list:
-                en.speed += 5
-                print(en.speed)
-            self.start_time = time.time()
                
         if self.end_time - self.start_time > self.randnum :
             self.enemy_list.append(Enemy(self.w,self.h))
