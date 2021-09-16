@@ -37,20 +37,6 @@ class Snake(arcade.Sprite):
     def eat(self):
         self.snakebody_list.append([self.center_x,self.center_y])
         self.score += 1   
-        
-# class Apple(arcade.Sprite):
-#     def __init__(self, w, h):
-#         arcade.Sprite.__init__(self)
-#         self.color = arcade.color.RED
-#         self.width = 16
-#         self.height = 16
-#         self.center_x = random.randint(0, w)
-#         self.center_y = random.randint(0, h)
-#         self.r = 8
-
-#     def draw(self):
-#         arcade.draw_circle_filled(
-#             self.center_x, self.center_y, self.r, self.color)
 
 class Apple(arcade.Sprite):
     def __init__(self, w, h):
