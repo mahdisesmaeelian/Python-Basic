@@ -3,4 +3,4 @@
 
 A simple calculator by -×+÷ ,sin,tan,cos,cot... operators.
 
-The UI of this cal made by QT
+The UI of this cal has been made by QT
