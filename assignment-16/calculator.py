@@ -1,4 +1,5 @@
 import math
+from functools import partial
 from sympy import cot
 from PySide6.QtWidgets import *
 from PySide6.QtUiTools import *
@@ -12,16 +13,18 @@ class Calc(QMainWindow):
         self.ui = loader.load("cal.ui", None)
         self.ui.show()
 
-        self.ui.num1.clicked.connect(self.num_1)
-        self.ui.num2.clicked.connect(self.num_2)
-        self.ui.num3.clicked.connect(self.num_3)
-        self.ui.num4.clicked.connect(self.num_4)
-        self.ui.num5.clicked.connect(self.num_5)
-        self.ui.num6.clicked.connect(self.num_6)
-        self.ui.num7.clicked.connect(self.num_7)
-        self.ui.num8.clicked.connect(self.num_8)
-        self.ui.num9.clicked.connect(self.num_9)
-        self.ui.num0.clicked.connect(self.num_0)
+        self.ui.num1.clicked.connect(partial(self.numbers,'1'))
+        self.ui.num2.clicked.connect(partial(self.numbers,'2'))
+        self.ui.num3.clicked.connect(partial(self.numbers,'3'))
+        self.ui.num4.clicked.connect(partial(self.numbers,'4'))
+        self.ui.num5.clicked.connect(partial(self.numbers,'5'))
+        self.ui.num6.clicked.connect(partial(self.numbers,'6'))
+        self.ui.num7.clicked.connect(partial(self.numbers,'7'))
+        self.ui.num8.clicked.connect(partial(self.numbers,'8'))
+        self.ui.num9.clicked.connect(partial(self.numbers,'9'))
+        self.ui.num0.clicked.connect(partial(self.numbers,'0'))
+
+
         self.ui.sumbtn.clicked.connect(self.numsum)
         self.ui.minbtn.clicked.connect(self.nummin)
         self.ui.eqbtn.clicked.connect(self.numeq)
@@ -37,32 +40,14 @@ class Calc(QMainWindow):
         self.ui.numfac.clicked.connect(self.numfactorial)
         self.ui.numcot.clicked.connect(self.numcot)
 
-    def num_1(self):
-        self.ui.textbox.setText(self.ui.textbox.text()+ '1')
-    def num_2(self):
-        self.ui.textbox.setText(self.ui.textbox.text()+ '2')
-    def num_3(self):
-        self.ui.textbox.setText(self.ui.textbox.text()+ '3')
-    def num_4(self):
-        self.ui.textbox.setText(self.ui.textbox.text()+ '4')
-    def num_5(self):
-        self.ui.textbox.setText(self.ui.textbox.text()+ '5')
-    def num_6(self):
-        self.ui.textbox.setText(self.ui.textbox.text()+ '6')
-    def num_7(self):
-        self.ui.textbox.setText(self.ui.textbox.text()+ '7')
-    def num_8(self):
-        self.ui.textbox.setText(self.ui.textbox.text()+ '8')
-    def num_9(self):
-        self.ui.textbox.setText(self.ui.textbox.text()+ '9')
-    def num_0(self):
-        self.ui.textbox.setText(self.ui.textbox.text()+ '0')
+    def numbers(self,x):
+        self.ui.textbox.setText(self.ui.textbox.text()+ x)
+    
     def numdot(self):
         for i in self.ui.textbox.text():
             if '.' not in self.ui.textbox.text():
                 self.ui.textbox.setText(self.ui.textbox.text()+ '.')
         
-
     def numsum(self):
         self.num1 = float(self.ui.textbox.text())
         self.ui.textbox.setText('')
