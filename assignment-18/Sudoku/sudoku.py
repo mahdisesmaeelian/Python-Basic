@@ -34,43 +34,61 @@ class Sudoko(QMainWindow):
 
         rand = randint(1,6)
 
-        try:
-            file_path = f"data/s{rand}.txt"
-            f = open(file_path , 'r')
-            hyper_text = f.read()
-            rows = hyper_text.split('\n')
+        file_path = f"data/s{rand}.txt"
+        f = open(file_path , 'r')
+        hyper_text = f.read()
+        rows = hyper_text.split('\n')
 
-            for i in range(9):
-                numbers = rows[i].split(' ')
-                for j in range(9):
-                    if numbers[j] != '0' :
-                        
-                        self.game[i][j].setText(numbers[j])
-                        if self.flag == 0:
-                            self.game[i][j].setStyleSheet('font-size: 26px ; color : black')
-                        else:
-                            self.game[i][j].setStyleSheet('font-size: 26px ; color : white')
+        for i in range(9):
+            numbers = rows[i].split(' ')
+            for j in range(9):
+                if numbers[j] != '0' :
+                    
+                    self.game[i][j].setText(numbers[j])
+                    if self.flag == 0:
+                        self.game[i][j].setStyleSheet('font-size: 26px ; color : black')
                     else:
-                        self.game[i][j].setStyleSheet('font-size: 26px ; color : blue')
-        except:
-            rand = randint(1,6)
+                        self.game[i][j].setStyleSheet('font-size: 26px ; color : white')
+                else:
+                    self.game[i][j].setStyleSheet('font-size: 26px ; color : blue')
 
     def CheckGame(self):
-
-        # for row in range(9):
-        #     for col in range(9):
-        #         for i in range(9):
-        #             for j in range(9):
-        #                 if self.game[row][i].text() == self.game[row][j].text() and i != j and self.game[row][i].text() != '':
-        #                     self.game[row][i].setStyleSheet('font-size: 26px ; background-color : pink')
-        #                 elif self.game[i][col].text() == self.game[j][col].text() and i != j and self.game[i][col].text() != '':
-        #                     self.game[i][col].setStyleSheet('font-size: 26px ; background-color : pink')
-
-                                    
+       
+        for row in range(9):
+            for col in range(9):
+                for i in range(9):
+                    for j in range(9):
+                        if self.game[row][i].text() == self.game[row][j].text() and i != j and self.game[row][i].text() != '' :
+                            self.game[row][i].setStyleSheet('font-size: 26px ; background-color : pink')                     
+                        elif self.game[i][col].text() == self.game[j][col].text() and i != j and self.game[i][col].text() != '':
+                            self.game[i][col].setStyleSheet('font-size: 26px ; background-color : pink')                    
+                                             
         for row in range(3):
             for col in range(3):
                 for i in range(3):
                     for j in range(3):
+                        if self.game[row][i].text() == self.game[row][j].text() and i != j and self.game[row][i].text() != '':
+                            self.game[row][i].setStyleSheet('font-size: 26px ; background-color : pink')
+                        elif self.game[i][col].text() == self.game[j][col].text() and i != j and self.game[i][col].text() != '':
+                            self.game[i][col].setStyleSheet('font-size: 26px ; background-color : pink')
+                        elif self.game[row][col].text() == self.game[i][j].text() and row!= i and col!= j and self.game[row][col].text() != '':
+                            self.game[i][j].setStyleSheet('font-size: 26px ; background-color : pink')
+
+        for row in range(3,6):
+            for col in range(3,6):
+                for i in range(3,6):
+                    for j in range(3,6):
+                        if self.game[row][i].text() == self.game[row][j].text() and i != j and self.game[row][i].text() != '':
+                            self.game[row][i].setStyleSheet('font-size: 26px ; background-color : pink')
+                        elif self.game[i][col].text() == self.game[j][col].text() and i != j and self.game[i][col].text() != '':
+                            self.game[i][col].setStyleSheet('font-size: 26px ; background-color : pink')
+                        elif self.game[row][col].text() == self.game[i][j].text() and row!= i and col!= j and self.game[row][col].text() != '':
+                            self.game[i][j].setStyleSheet('font-size: 26px ; background-color : pink')
+        
+        for row in range(6,9):
+            for col in range(6,9):
+                for i in range(6,9):
+                    for j in range(6,9):
                         if self.game[row][i].text() == self.game[row][j].text() and i != j and self.game[row][i].text() != '':
                             self.game[row][i].setStyleSheet('font-size: 26px ; background-color : pink')
                         elif self.game[i][col].text() == self.game[j][col].text() and i != j and self.game[i][col].text() != '':
@@ -99,28 +117,6 @@ class Sudoko(QMainWindow):
                         if self.game[row][col].text() == self.game[i][j].text() and row!= i and col!= j and self.game[row][col].text() != '':
                             self.game[i][j].setStyleSheet('font-size: 26px ; background-color : pink')
         
-        for row in range(3,6):
-            for col in range(3,6):
-                for i in range(3,6):
-                    for j in range(3,6):
-                        if self.game[row][i].text() == self.game[row][j].text() and i != j and self.game[row][i].text() != '':
-                            self.game[row][i].setStyleSheet('font-size: 26px ; background-color : pink')
-                        elif self.game[i][col].text() == self.game[j][col].text() and i != j and self.game[i][col].text() != '':
-                            self.game[i][col].setStyleSheet('font-size: 26px ; background-color : pink')
-                        elif self.game[row][col].text() == self.game[i][j].text() and row!= i and col!= j and self.game[row][col].text() != '':
-                            self.game[i][j].setStyleSheet('font-size: 26px ; background-color : pink')
-        
-        for row in range(6,9):
-            for col in range(6,9):
-                for i in range(6,9):
-                    for j in range(6,9):
-                        if self.game[row][i].text() == self.game[row][j].text() and i != j and self.game[row][i].text() != '':
-                            self.game[row][i].setStyleSheet('font-size: 26px ; background-color : pink')
-                        elif self.game[i][col].text() == self.game[j][col].text() and i != j and self.game[i][col].text() != '':
-                            self.game[i][col].setStyleSheet('font-size: 26px ; background-color : pink')
-                        elif self.game[row][col].text() == self.game[i][j].text() and row!= i and col!= j and self.game[row][col].text() != '':
-                            self.game[i][j].setStyleSheet('font-size: 26px ; background-color : pink')
-        
         for row in range(6,9):
             for col in range(3,6):
                 for i in range(6,9):
@@ -141,7 +137,7 @@ class Sudoko(QMainWindow):
                     for j in range(6,9):
                         if self.game[row][col].text() == self.game[i][j].text() and row!= i and col!= j and self.game[row][col].text() != '':
                             self.game[i][j].setStyleSheet('font-size: 26px ; background-color : pink')
-        
+
 
     def DarkMode(self):
         if self.flag == 0 :
