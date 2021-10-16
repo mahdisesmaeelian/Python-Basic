@@ -34,23 +34,27 @@ class Sudoko(QMainWindow):
 
         rand = randint(1,6)
 
-        file_path = f"data/s{rand}.txt"
-        f = open(file_path , 'r')
-        hyper_text = f.read()
-        rows = hyper_text.split('\n')
+        try:
+            file_path = f"data/s{rand}.txt"
+            f = open(file_path , 'r')
+            hyper_text = f.read()
+            rows = hyper_text.split('\n')
 
-        for i in range(9):
-            numbers = rows[i].split(' ')
-            for j in range(9):
-                if numbers[j] != '0' :
-                    
-                    self.game[i][j].setText(numbers[j])
-                    if self.flag == 0:
-                        self.game[i][j].setStyleSheet('font-size: 26px ; color : black')
+            for i in range(9):
+                numbers = rows[i].split(' ')
+                for j in range(9):
+                    if numbers[j] != '0' :
+                        
+                        self.game[i][j].setText(numbers[j])
+                        if self.flag == 0:
+                            self.game[i][j].setStyleSheet('font-size: 26px ; color : black')
+                        else:
+                            self.game[i][j].setStyleSheet('font-size: 26px ; color : white')
                     else:
-                        self.game[i][j].setStyleSheet('font-size: 26px ; color : white')
-                else:
-                    self.game[i][j].setStyleSheet('font-size: 26px ; color : blue')
+                        self.game[i][j].setStyleSheet('font-size: 26px ; color : blue')
+        except:
+            print('error')
+            rand = randint(1,6)
 
     def CheckGame(self):
        
