@@ -58,8 +58,7 @@ def texttospeech(message):
   myobj = gTTS(text = message_text, lang = language, slow = False)
   myobj.save("voice.mp3")
   audio = open("voice.mp3", "rb")
-  mybot.send_audio(message.chat.id, audio)
-# دستور جدید
+  mybot.send_voice(message.chat.id, audio)
 @mybot.message_handler(commands=['music'])
 def note_to_music(message):
   mybot.reply_to(message, "Enter the note in form : ('note' , duration ),('note' , duration)... we will convert it to a music")
