@@ -1,7 +1,7 @@
 import numpy as np
 import cv2
 
-img = np.zeros((800, 800, 1), dtype = "uint8")
+img = np.zeros((800, 800), dtype = "uint8")
 
 blacksquare = img[0:100, 0:100] = 255
 
