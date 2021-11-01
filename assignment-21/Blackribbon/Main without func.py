@@ -5,10 +5,12 @@ image = cv2.imread('Input.jpg', 0)
 
 image = cv2.resize(image, (410,620))
 
-image[90:120,0:40] = 0
-image[60:90,30:70] = 0
-image[30:60,60:100] = 0
-image[0:30,90:130] = 0
+for i in range (100):
+    image[i:i+40,100-i] = 0
+
+# a tiny regtangle to complete the line:
+for i in range (90):
+    image[0:i-670,190-i] = 0
 
 cv2.imshow("Image", image)
 
